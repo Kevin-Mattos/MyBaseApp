@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 
-suspend fun <T> Flow<T>.flowObserve(
+suspend fun <T> Flow<T>.onCollect(
     onCollect: ((T) -> Unit)? = null,
     onError: ((Throwable) -> Unit)? = null,
     onLoading: ((Boolean) -> Unit)? = null
@@ -15,7 +15,7 @@ suspend fun <T> Flow<T>.flowObserve(
             onLoading?.invoke(false)
             onError?.invoke(throwable)
         }
-    .collect {
-        onLoading?.invoke(false)
-        onCollect?.invoke(it)
-    }
+        .collect {
+            onLoading?.invoke(false)
+            onCollect?.invoke(it)
+        }

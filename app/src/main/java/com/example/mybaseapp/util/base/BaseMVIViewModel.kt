@@ -7,12 +7,12 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-abstract class BaseMVIViewModel<Intent, State>: ViewModel() {
+abstract class BaseMVIViewModel<Intent, State> : ViewModel() {
 
     protected val disposable = CompositeDisposable()//RXJava
 
     abstract val initialState: State
-    protected val _state by lazy { MutableStateFlow(initialState) } //<State>()
+    protected val _state by lazy { MutableStateFlow(initialState) }
     val state = _state.asStateFlow()
 
     abstract fun handle(intent: Intent)
