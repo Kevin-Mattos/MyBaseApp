@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
 
     <application
         android:name=".MyApplication"
@@ -15,14 +18,20 @@
         android:theme="@style/Theme.MyBaseApp">
 
         <activity android:name=".sync.getSMS.GetSmsCodeActivity">
-
         </activity>
-        <activity android:name=".sync.InitialSyncActivity">
+        <activity android:name=".cameraX.CameraXActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".sync.InitialSyncActivity">
+
+        </activity>
+
+        <activity android:name=".example.mvvmActivity.MyExampleActivity">
+
         </activity>
 
         <activity android:name=".sync.retrieveUserNumber.RetrieveUserCredentialActivity">
